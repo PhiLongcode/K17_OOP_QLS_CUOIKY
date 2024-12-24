@@ -1,15 +1,18 @@
 package entity;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class Sach {
-		protected int maSach;
+public abstract class Sach  implements Serializable{
+	private static final long serialVersionUID = 2593189524794325047L;
+		protected String maSach;
 	    protected Date ngayNhap;
 	    protected double donGia;
 	    protected int soLuong;
 	    protected String nhaXuatBan;
  
-		public Sach(int maSach, Date ngayNhap, double donGia, int soLuong, String nhaXuatBan) {
+		public Sach(String maSach, Date ngayNhap, double donGia, int soLuong, String nhaXuatBan) {
 			this.maSach = maSach;
 			this.ngayNhap = ngayNhap;
 			this.donGia = donGia;
@@ -17,10 +20,10 @@ public abstract class Sach {
 			this.nhaXuatBan = nhaXuatBan;
 		}
 
-	    public int getMaSach() {
+	    public String getMaSach() {
 			return maSach;
 		}
-		public void setMaSach(int maSach) {
+		public void setMaSach(String maSach) {
 			this.maSach = maSach;
 		}
 		public Date getNgayNhap() {
@@ -49,7 +52,9 @@ public abstract class Sach {
 		}
 		@Override
 	    public String toString() {
-	        return "Mã Sách: " + maSach + ", Ngày Nhập: " + ngayNhap + ", Đơn Giá: " + donGia +
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			 String formattedDate = dateFormat.format(ngayNhap);
+	        return "Mã Sách: " + maSach + ", Ngày Nhập: " + formattedDate + ", Đơn Giá: " + donGia +
 	                ", Số Lượng: " + soLuong + ", Nhà Xuất Bản: " + nhaXuatBan;
 	    }
 		

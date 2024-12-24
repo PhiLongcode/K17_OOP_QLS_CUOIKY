@@ -1,11 +1,13 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SachThamKhao extends Sach {
+public class SachThamKhao extends Sach implements Serializable {
+	private static final long serialVersionUID = 5722119392024971021L;
     private double thue;
 
-    public SachThamKhao(int maSach, Date ngayNhap, double donGia, int soLuong, String nhaXuatBan, double thue) {
+    public SachThamKhao(String maSach, Date ngayNhap, double donGia, int soLuong, String nhaXuatBan, double thue) {
         super(maSach, ngayNhap, donGia, soLuong, nhaXuatBan);
         this.thue = thue;
     }
