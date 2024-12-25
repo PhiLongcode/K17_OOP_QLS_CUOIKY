@@ -30,7 +30,7 @@ public class ThemMoiSachControl {
 		IThemDAO = _IThemDAO;
 	}
 	 // Tạo mã sách mới không trùng
-	private String taoMaSach(String loaiSach) {
+	public String taoMaSach(String loaiSach) {
 	    // Bước 1: Lấy danh sách các mã sách đã tồn tại từ DAO
 		List<String> maSachDaTonTai = IThemDAO.docDanhSachMaSach();
 		
