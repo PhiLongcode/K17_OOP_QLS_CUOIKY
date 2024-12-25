@@ -57,15 +57,15 @@ public class ThemSachMoiDAOFile implements IThemSachDAO {
 
 
     //TEST
-    public void getAllSach() {
-        if (tempData != null && !tempData.isEmpty()) {  
-            for (Sach sach : tempData) {
-              System.out.println(sach);
-            }
-        } else {
-            System.out.println("Danh sách sách trống.");
-        }
-    }
+//    public void getAllSach() {
+//        if (tempData != null && !tempData.isEmpty()) {  
+//            for (Sach sach : tempData) {
+//              System.out.println(sach);
+//            }
+//        } else {
+//            System.out.println("Danh sách sách trống.");
+//        }
+//    }
 
 	@Override
 	public ArrayList<String> docDanhSachMaSach() {

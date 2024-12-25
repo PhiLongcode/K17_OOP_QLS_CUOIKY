@@ -50,13 +50,6 @@ public abstract class Sach  implements Serializable{
 		public void setNhaXuatBan(String nhaXuatBan) {
 			this.nhaXuatBan = nhaXuatBan;
 		}
-		@Override
-	    public String toString() {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			 String formattedDate = dateFormat.format(ngayNhap);
-	        return "Mã Sách: " + maSach + ", Ngày Nhập: " + formattedDate + ", Đơn Giá: " + donGia +
-	                ", Số Lượng: " + soLuong + ", Nhà Xuất Bản: " + nhaXuatBan;
-	    }
 		
 		public abstract double tinhThanhTien();
 

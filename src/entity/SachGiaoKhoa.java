@@ -20,12 +20,6 @@ public class SachGiaoKhoa extends Sach implements Serializable  {
 			this.tinhTrang = tinhTrang;
 		}
 
-		
-
-	    @Override
-	    public String toString() {
-	        return super.toString() + ", Tình Trạng: " + (tinhTrang ? "Mới" : "Cũ") + ", Thành Tiền: " + tinhThanhTien();
-	    }
 
 		@Override
 		public double tinhThanhTien(){

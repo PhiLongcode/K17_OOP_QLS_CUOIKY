@@ -20,10 +20,6 @@ public class SachThamKhao extends Sach implements Serializable {
 		this.thue = thue;
 	}
 
-    @Override
-    public String toString() {
-        return super.toString() + ", Thuế: " + thue + ", Thành Tiền: " + tinhThanhTien();
-    }
 	@Override
 	public double tinhThanhTien() {
 		// TODO Auto-generated method stub
