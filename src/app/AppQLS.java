@@ -4,13 +4,16 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 import controller.InDSSachControl;
+import controller.ThanhTienControl;
 import controller.ThemMoiSachControl;
 import controller.XoaSachControl;
 import dao.InDSSDAOFile;
+import dao.ThanhTienDAOFile;
 import dao.ThemSachMoiDAOFile;
 import dao.XoaSachDAOFile;
 import ui.InDSSachCUI;
 import ui.MenuCUI;
+import ui.ThanhTienCUI;
 import ui.ThemSachInputCUI;
 import ui.ThongBaoThemSachCUI;
 import ui.ValidCUI;
@@ -27,18 +30,20 @@ public class AppQLS {
         // Initialize UI components
         InDSSachCUI inDSSachCUIRemote = new InDSSachCUI(pWriterRemote);
         XoaSachCUI xoaSachCUIRemote = new XoaSachCUI(pWriterRemote);
+        ThanhTienCUI thanhTienCUIRemote = new ThanhTienCUI(pWriterRemote);
 
         // Initialize DAO components
         ThemSachMoiDAOFile themSachMoiDAOFile = new ThemSachMoiDAOFile("src//Sach.txt");
         InDSSDAOFile inDSSVDAOFileRemote = new InDSSDAOFile("src//Sach.txt");
-		XoaSachDAOFile xoaSachDAOFileRemote = new XoaSachDAOFile("src//Sach.txt");
+	XoaSachDAOFile xoaSachDAOFileRemote = new XoaSachDAOFile("src//Sach.txt");
+        ThanhTienDAOFile thanhTienDAOFileRemote = new ThanhTienDAOFile("src//Sach.txt");
 
         // Initialize Control components
         ThemMoiSachControl themMoiSachControlRemote = new ThemMoiSachControl(themSachMoiDAOFile);
         themMoiSachControlRemote.setThemSachDAOFile(themSachMoiDAOFile);
         themMoiSachControlRemote.setTbThemSachCUI(new ThongBaoThemSachCUI(pWriterRemote));
-
         InDSSachControl inDSSachControlRemote = new InDSSachControl(inDSSVDAOFileRemote, inDSSachCUIRemote);
+        ThanhTienControl thanhTienControlRemote = new ThanhTienControl(thanhTienDAOFileRemote,thanhTienCUIRemote);
 //        inDSSachControlRemote.set(inDSSVDAOFileRemote);
 
 
@@ -51,6 +56,7 @@ public class AppQLS {
         MenuCUI menuCUIRemote = new MenuCUI(pWriterRemote, scannerRemote, themMoiSachCUIRemote);
         menuCUIRemote.setInDSSachControl(inDSSachControlRemote);
         menuCUIRemote.setXoaSachControl(xoaSachControlRemote);
+        menuCUIRemote.setThanhTienControl(thanhTienControlRemote);
 
         // Start the menu control loop
         menuCUIRemote.controlLoop();

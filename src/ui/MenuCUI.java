@@ -2,8 +2,8 @@ package ui;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
-
 import controller.InDSSachControl;
+import controller.ThanhTienControl;
 import controller.XoaSachControl;
 import dao.ThemSachMoiDAOFile;
 import entity.Sach;
@@ -18,6 +18,7 @@ public class MenuCUI {
 		private ThemSachInputCUI themSachInputCUI = null;
 		private InDSSachControl inDSSachControl = null;
 		private XoaSachControl xoaSachControl = null;
+		private ThanhTienControl thanhTienControl = null;
 
 
 		//functions - methods
@@ -35,6 +36,9 @@ public class MenuCUI {
 
 		public void setXoaSachControl(XoaSachControl xoaSachControl) {
 			this.xoaSachControl = xoaSachControl;
+		}
+		public void setThanhTienControl (ThanhTienControl thanhTienControl){
+			this.thanhTienControl = thanhTienControl;
 		}
 
 		public MenuCUI(PrintWriter _screenOutput, Scanner _keyBoardInput) {
@@ -88,6 +92,11 @@ public class MenuCUI {
 					thanhTien();
 					continue;
 				}
+				if ("EXIT".equalsIgnoreCase(command)) {
+					screenOutput.println("Dang thoat chuong trinh...");
+					screenOutput.println("Da thoat chuong trinh thanh cong !!!");
+					break;
+				}
 
 			}
 
@@ -109,53 +118,15 @@ public class MenuCUI {
 	}
 		
 		private void thanhTien() {
-			while (true) {
-				screenOutput.println("Chon mot trong cac lua chon sau:");
-				screenOutput.println("1. Tinh tong thanh tien cua tat ca cac sach dang co");
-				screenOutput.println("2. Tinh tong thanh tien cua tung loai sach");
-				screenOutput.println("3. Tinh trung binh cong theo don gia cua tung loai sach");
-				screenOutput.println("4. Thoat");
-				screenOutput.print(prompt);screenOutput.flush();
-				chon = keyBoardInput.nextLine().trim();
-	
-				switch (chon) {
-					case "1":
-						tinhTongThanhTienTatCa();
-						break;
-					case "2":
-						tinhTongThanhTienTheoLoai();
-						break;
-					case "3":
-						tinhTrungBinhCongDonGia();
-						break;
-					case "4":
-						screenOutput.println("Dang thoat...");
-						return;
-					default:
-						screenOutput.println("Vui long chon 1 trong 4 lua chon tren !!!");
-				}
-			}
-			
+			thanhTienControl.tinhTien();
 		}
-		private void tinhTongThanhTienTatCa() {
-        
-   		}
-
-		private void tinhTongThanhTienTheoLoai() {
-        
-   		}
-
-		private void tinhTrungBinhCongDonGia() {
-        
-   		}
-
-
 		private void menu() {
 			screenOutput.println("~~~~~~~~~~Console Help Menu~~~~~~~~~");
 			screenOutput.println("[1] - Them moi sach");
 			screenOutput.println("[2] - In danh sach sach");
 			screenOutput.println("[3] - Xoa sach theo ma sach");
 			screenOutput.println("[5] - Tinh tien");
+			screenOutput.println("[EXIT] - Thoat chuong trinh");
 			screenOutput.println("~~~~~~~~~~Console Help Menu~~~~~~~~~");
 		}
 
