@@ -17,9 +17,9 @@ public class InDSSachCUI {
     }
 
     public void inDSSach(ArrayList<Sach> dsSach) {
-        screenOutput.printf("%-10s %-12s %-20s %-12s %-15s %-14s %-17s%n",
-                "Mã sách", "Ngày Nhập", "Đơn giá", "Số lượng", "Nhà Xuất bản", "Tình Trạng", "Thuế");
-        screenOutput.println("-------------------------------------------------------------------------------------------------");
+        screenOutput.printf("%-10s %-12s %-17s %-12s %-15s %-14s %-10s %-17s%n",
+                "Mã sách", "Ngày Nhập", "Đơn giá", "Số lượng", "Nhà Xuất bản", "Tình Trạng", "Thuế", "Thành tiền");
+        screenOutput.println("-------------------------------------------------------------------------------------------------------------");
 
         for (Sach sach : dsSach) {
             String ngayNhapFormatted = dateFormat.format(sach.getNgayNhap());
@@ -34,8 +34,8 @@ public class InDSSachCUI {
                 thue = String.format("%.2f", stk.getThue());
             }
 
-            screenOutput.printf("%-10s %-12s %-20.2f %-12d %-15s %-14s %-17s%n",
-                    sach.getMaSach(), ngayNhapFormatted, sach.getDonGia(), sach.getSoLuong(), sach.getNhaXuatBan(), tinhTrang, thue);
+            screenOutput.printf("%-10s %-12s %-17.2f %-12d %-15s %-14s %-10s %-17s%n",
+                    sach.getMaSach(), ngayNhapFormatted, sach.getDonGia(), sach.getSoLuong(), sach.getNhaXuatBan(), tinhTrang, thue, sach.tinhThanhTien());
         }
         screenOutput.flush();
     }

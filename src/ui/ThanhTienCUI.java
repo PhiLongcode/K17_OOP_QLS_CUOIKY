@@ -20,11 +20,11 @@ public class ThanhTienCUI {
         this.screenOutput = new PrintWriter(System.out, true);
         prompt = "->";
         chon = "";
-        tTDAOFile = new ThanhTienDAOFile("Sach.txt");
+        tTDAOFile = new ThanhTienDAOFile("src//Sach.txt");
     }
 
     public String nhapLoaiSach() {
-        screenOutput.println("Nhập loại sách (1:SachGiaoKhoa hoặc 2:SachThamKhao) Lưu ý: (nhập số 1 or 2): ");
+        screenOutput.println("Nhập loại sách (1: SachGiaoKhoa hoặc 2: SachThamKhao) Lưu ý: (nhập số 1 or 2): ");
         screenOutput.flush();
         String loaiSach = keyBoardInput.nextLine();
         return loaiSach;

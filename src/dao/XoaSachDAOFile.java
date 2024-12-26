@@ -80,4 +80,15 @@ public class XoaSachDAOFile implements XoaDAO {
         }
         return daCapNhat;
     }
+
+	@Override
+	public Sach getSach(String maSach) {
+		 ArrayList<Sach> DSSach = getDSSach();
+	        for (Sach sach : DSSach) {
+	            if (sach.getMaSach().equals(maSach)) {
+	                return sach;
+	            }
+	        }
+	        return null;
+	}
 }

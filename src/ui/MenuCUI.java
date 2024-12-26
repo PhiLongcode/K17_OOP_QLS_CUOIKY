@@ -3,6 +3,7 @@ package ui;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import controller.InDSSachControl;
+import controller.SuaSachControl;
 import controller.ThanhTienControl;
 import controller.XoaSachControl;
 import dao.ThemSachMoiDAOFile;
@@ -19,7 +20,7 @@ public class MenuCUI {
 		private InDSSachControl inDSSachControl = null;
 		private XoaSachControl xoaSachControl = null;
 		private ThanhTienControl thanhTienControl = null;
-
+		private SuaSachControl suaSachControl = null;
 
 		//functions - methods
 
@@ -39,6 +40,9 @@ public class MenuCUI {
 		}
 		public void setThanhTienControl (ThanhTienControl thanhTienControl){
 			this.thanhTienControl = thanhTienControl;
+		}
+		public void setSuaSachControl(SuaSachControl suaSachControl) {
+			this.suaSachControl = suaSachControl;
 		}
 
 		public MenuCUI(PrintWriter _screenOutput, Scanner _keyBoardInput) {
@@ -88,6 +92,10 @@ public class MenuCUI {
 					xoaSach();
 					continue;
 				}
+				if ("4".equalsIgnoreCase(command)) {
+					suaSach();
+					continue;
+				}
 				if ("5".equalsIgnoreCase(command)) {
 					thanhTien();
 					continue;
@@ -116,19 +124,23 @@ public class MenuCUI {
 		themSachInputCUI.nhapThongTinSach();
 
 	}
-		
-		private void thanhTien() {
-			thanhTienControl.tinhTien();
-		}
-		private void menu() {
+	private void suaSach(){
+		suaSachControl.suaSach();
+	}
+
+	private void thanhTien() {
+		thanhTienControl.tinhTien();
+	}
+	private void menu() {
 			screenOutput.println("~~~~~~~~~~Console Help Menu~~~~~~~~~");
 			screenOutput.println("[1] - Them moi sach");
 			screenOutput.println("[2] - In danh sach sach");
 			screenOutput.println("[3] - Xoa sach theo ma sach");
+			screenOutput.println("[4] - Sua sach theo ma sach");
 			screenOutput.println("[5] - Tinh tien");
 			screenOutput.println("[EXIT] - Thoat chuong trinh");
 			screenOutput.println("~~~~~~~~~~Console Help Menu~~~~~~~~~");
-		}
+	}
 
 
 }

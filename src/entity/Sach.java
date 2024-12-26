@@ -6,7 +6,7 @@ import java.util.Date;
 
 public abstract class Sach  implements Serializable{
 	private static final long serialVersionUID = 2593189524794325047L;
-		protected String maSach;
+		protected final String maSach;
 	    protected Date ngayNhap;
 	    protected double donGia;
 	    protected int soLuong;
@@ -23,9 +23,7 @@ public abstract class Sach  implements Serializable{
 	    public String getMaSach() {
 			return maSach;
 		}
-		public void setMaSach(String maSach) {
-			this.maSach = maSach;
-		}
+		
 		public Date getNgayNhap() {
 			return ngayNhap;
 		}
