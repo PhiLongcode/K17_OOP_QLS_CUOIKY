@@ -13,7 +13,7 @@ public class XoaSachCUI {
     public String nhapMaSach() {
         Scanner scanner = new Scanner(System.in);
         screenOutput.println("Nhập mã sách cần xóa: ");
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 
     public void thongBaoKetQua(String maSach, boolean daXoa) {

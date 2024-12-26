@@ -7,6 +7,7 @@ import controller.InDSSachControl;
 import controller.SuaSachControl;
 import controller.ThanhTienControl;
 import controller.ThemMoiSachControl;
+import controller.TimKiemSachControl;
 import controller.XoaSachControl;
 import dao.InDSSDAOFile;
 import dao.ThanhTienDAOFile;
@@ -19,6 +20,7 @@ import ui.SuaSachCUI;
 import ui.ThanhTienCUI;
 import ui.ThemSachInputCUI;
 import ui.ThongBaoThemSachCUI;
+import ui.TimTKSCUI;
 import ui.ValidCUI;
 import ui.XoaSachCUI;
 
@@ -46,19 +48,19 @@ public class AppQLS {
         ThemMoiSachControl themMoiSachControlRemote = new ThemMoiSachControl(themSachMoiDAOFile);
         themMoiSachControlRemote.setThemSachDAOFile(themSachMoiDAOFile);
         themMoiSachControlRemote.setTbThemSachCUI(new ThongBaoThemSachCUI(pWriterRemote));
+        
         InDSSachControl inDSSachControlRemote = new InDSSachControl(inDSSVDAOFileRemote, inDSSachCUIRemote);
         ThanhTienControl thanhTienControlRemote = new ThanhTienControl(thanhTienDAOFileRemote,thanhTienCUIRemote);
-//        inDSSachControlRemote.set(inDSSVDAOFileRemote);
-
         XoaSachControl xoaSachControlRemote = new XoaSachControl(xoaSachDAOFileRemote, xoaSachCUIRemote);
-//		xoaSachControlRemote.set(xoaSachDAOFileRemote);
 
         SuaSachControl suaSachControlRemote = new SuaSachControl(xoaSachDAOFileRemote, suaSachCUIRemote);
         suaSachControlRemote.suaSach();
-        // Initialize MenuCUI and set controls
         
+        TimKiemSachControl timSachControlRemote = new  TimKiemSachControl (null, timTKSDAOFile, timTKSDAOFile);
+        // Initialize MenuCUI and set controls
+        TimTKSCUI timTKSCUI = new TimTKSCUI(pWriterRemote, scannerRemote, timSachControlRemote);
         ThemSachInputCUI themMoiSachCUIRemote = new ThemSachInputCUI(pWriterRemote, scannerRemote, themMoiSachControlRemote);
-        MenuCUI menuCUIRemote = new MenuCUI(pWriterRemote, scannerRemote, themMoiSachCUIRemote);
+        MenuCUI menuCUIRemote = new MenuCUI(pWriterRemote, scannerRemote, themMoiSachCUIRemote , timTKSCUI);
         menuCUIRemote.setInDSSachControl(inDSSachControlRemote);
         menuCUIRemote.setXoaSachControl(xoaSachControlRemote);
         menuCUIRemote.setThanhTienControl(thanhTienControlRemote);

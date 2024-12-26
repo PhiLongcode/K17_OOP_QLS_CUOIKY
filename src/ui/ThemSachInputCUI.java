@@ -30,13 +30,13 @@ public class ThemSachInputCUI {
     public ThemSachInputCUI(PrintWriter _screenOutput, Scanner _keyboardInput) {
         screenOutput = _screenOutput;
         keyboardInput = _keyboardInput;
-        ngayNhapPrompt = "NHAP NGAY NHAP SACH (dd/MM/yyyy): ";
-        loaiSachPrompt = "NHAP LOAI SACH ( 1. Sach giao khoa / 2. Sach tham khao): ";
-        nhaXuatBanPrompt = "NHAP NHA XUAT BAN: ";
-        soLuongPrompt = "NHAP SO LUONG SACH: ";
-        donGiaPrompt = "NHAP DON GIA: ";
-        tinhTrangPrompt = "NHAP TINH TRANG: (1. Cu / 2: Moi):";
-        thuePrompt = "NHAP THUE: ";
+        ngayNhapPrompt = "Nhập ngày nhập sách (dd/MM/yyyy): ";
+        loaiSachPrompt = "Nhập loại sách ( 1. Sach giao khoa / 2. Sach tham khao): ";
+        nhaXuatBanPrompt = "Nhập nhà xuất bản: ";
+        soLuongPrompt = "Nhập số lượng sách: ";
+        donGiaPrompt = "Nhập đơn giá: ";
+        tinhTrangPrompt = "Nhập tình trạng: (1. Cu / 2: Moi):";
+        thuePrompt = "Nhập thuế: ";
         String pattern = "dd/MM/yyyy";
          dateFormat = new SimpleDateFormat(pattern);
     }

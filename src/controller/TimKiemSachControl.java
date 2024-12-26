@@ -24,11 +24,11 @@ public class TimKiemSachControl {
         return timDAO.timSachTheoNXB(nhaXuatBan);
     }
 
-    public Sach timSachTheoMaSach(String maSach) {
+    public ArrayList<Sach> timSachTheoMaSach(String maSach) {
         return timDAO.timSachTheoMaSach(maSach);
     }
 
-//    public ArrayList<Sach> timSachThamKhao(boolean thamKhao) {
-//        return timDAO.timSachThamKhao(thamKhao);
-//    }
+    public ArrayList<Sach> timSachThamKhao(String thamKhao) {
+        return timDAO.timSachThamKhao(thamKhao);
+    }
 }

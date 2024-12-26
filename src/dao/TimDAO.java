@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public interface TimDAO {
     ArrayList<Sach> timSachTheoNXB(String nhaXuatBan);
-    Sach timSachTheoMaSach(String maSach);
-//    ArrayList<Sach> timSachThamKhao(boolean thamKhao);
+    ArrayList<Sach> timSachTheoMaSach(String maSach);
+    ArrayList<Sach> timSachThamKhao(String loaiSach);
+    ArrayList<Sach> danhSachSach();
 }

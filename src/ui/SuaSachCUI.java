@@ -21,7 +21,7 @@ public class SuaSachCUI {
     public String nhapMaSach() {
         Scanner scanner = new Scanner(System.in);
         screenOutput.println("Nhập mã sách cần sửa: ");
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 
     public Sach nhapThongTinSachMoi(Sach sach) {
