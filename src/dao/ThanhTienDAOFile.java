@@ -1,15 +1,12 @@
 package dao;
 
-import java.util.Scanner;    
-import java.io.BufferedReader;
+import java.util.Scanner;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import entity.Sach;
 import entity.SachGiaoKhoa;
@@ -17,7 +14,12 @@ import entity.SachThamKhao;
 
 public class ThanhTienDAOFile implements IThanhTienDAO {
     private File file = null;
+    private Scanner sc = null;
 
+    public ThanhTienDAOFile(String fileName) {
+        sc = new Scanner(System.in);
+        this.file = new File(fileName);
+    }
 
     @Override
     public ArrayList<Sach> danhSachSach() {
@@ -26,74 +28,76 @@ public class ThanhTienDAOFile implements IThanhTienDAO {
         ArrayList<Sach> danhSachSach = null;
 
         try {
-            //Mo duong truyen
+            // Open the file stream
             fileStream = new FileInputStream(file);
             oIS = new ObjectInputStream(fileStream);
 
-            //Doc du lieu
+            // Read the data
             danhSachSach = (ArrayList<Sach>) oIS.readObject();
 
-            //Dong duong truyen
-            oIS.close();
-            fileStream.close();
-
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.err.println("File not found: " + e.getMessage());
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.err.println("Class not found: " + e.getMessage());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("IO Exception: " + e.getMessage());
+        } finally {
+            // Close the streams
+            try {
+                if (oIS != null) {
+                    oIS.close();
+                }
+                if (fileStream != null) {
+                    fileStream.close();
+                }
+            } catch (IOException e) {
+                System.err.println("Error closing streams: " + e.getMessage());
+            }
         }
         return danhSachSach;
-    }
-    private Scanner sc = null;
-
-
-    public ThanhTienDAOFile(String fileName) {
-        
-        sc = new Scanner(System.in);
-        this.file = new File(fileName);
     }
 
     public double tinhTongThanhTienTatCa() {
         double tong = 0.0;
-        ArrayList<Sach> danhSachSach = danhSachSach() ; 
-        for (Sach sach : danhSachSach) {
-            tong += sach.tinhThanhTien();
+        ArrayList<Sach> danhSachSach = danhSachSach();
+        if (danhSachSach != null) {
+            for (Sach sach : danhSachSach) {
+                tong += sach.tinhThanhTien();
+            }
         }
         return tong;
     }
-    
 
     public double tinhTongThanhTienTheoLoai(String loaiSach) {
-        ArrayList<Sach> danhSachSach = danhSachSach() ; 
+        ArrayList<Sach> danhSachSach = danhSachSach();
         double tongThanhTien = 0.0;
-        for (Sach sach : danhSachSach) {
-            if (loaiSach.equalsIgnoreCase("1") && sach instanceof SachGiaoKhoa) {
-                
-                tongThanhTien += sach.tinhThanhTien();
-            } else if (loaiSach.equalsIgnoreCase("2") && sach instanceof SachThamKhao) {
-                tongThanhTien += sach.tinhThanhTien();
+        if (danhSachSach != null) {
+            for (Sach sach : danhSachSach) {
+                if (loaiSach.equalsIgnoreCase("1") && sach instanceof SachGiaoKhoa) {
+                    tongThanhTien += sach.tinhThanhTien();
+                } else if (loaiSach.equalsIgnoreCase("2") && sach instanceof SachThamKhao) {
+                    tongThanhTien += sach.tinhThanhTien();
+                }
             }
         }
         return tongThanhTien;
     }
 
     public double tinhTrungBinhDonGiaTheoLoai(String loaiSach) {
-        ArrayList<Sach> danhSachSach = danhSachSach() ;
+        ArrayList<Sach> danhSachSach = danhSachSach();
         double tongDonGia = 0.0;
         int demSach = 0;
-        for (Sach sach : danhSachSach) {
-            if (loaiSach.equalsIgnoreCase("1") && sach instanceof SachGiaoKhoa) {
-                
-                tongDonGia += sach.getDonGia();
-                demSach++;
-            } else if (loaiSach.equalsIgnoreCase("2") && sach instanceof SachThamKhao) {
-                tongDonGia += sach.tinhThanhTien();
-                demSach++;
+        if (danhSachSach != null) {
+            for (Sach sach : danhSachSach) {
+                if (loaiSach.equalsIgnoreCase("1") && sach instanceof SachGiaoKhoa) {
+                    tongDonGia += sach.getDonGia();
+                    demSach++;
+                } else if (loaiSach.equalsIgnoreCase("2") && sach instanceof SachThamKhao) {
+                    tongDonGia += sach.tinhThanhTien();
+                    demSach++;
+                }
             }
         }
         return demSach > 0 ? tongDonGia / demSach : 0;
     }
-    
 }
