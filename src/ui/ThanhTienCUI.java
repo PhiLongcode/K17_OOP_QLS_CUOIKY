@@ -70,13 +70,25 @@ public class ThanhTienCUI {
 
     private void tinhTongThanhTienTheoLoai(String loaiSach) {
         double tienTungLoai = tTDAOFile.tinhTongThanhTienTheoLoai(loaiSach);
-        screenOutput.println("Tong thanh tien cua " + loaiSach + " la: " + tienTungLoai);
-        screenOutput.flush();
+        if ("1".equalsIgnoreCase(loaiSach)){
+            screenOutput.println("Tong thanh tien cua Sach Giao Khoa la: " + tienTungLoai);
+            screenOutput.flush();
+        }
+        if ("2".equalsIgnoreCase(loaiSach)){
+            screenOutput.println("Tong thanh tien cua Sach Tham Khao la: " + tienTungLoai);
+            screenOutput.flush();
+        }
     }
 
     private void tinhTrungBinhCongDonGia(String loaiSach) {
         double trungBinhCongDonGia = tTDAOFile.tinhTrungBinhDonGiaTheoLoai(loaiSach);
-        screenOutput.println("Trung binh con don gia cua " + loaiSach + " la: " + trungBinhCongDonGia);
-        screenOutput.flush();
+        if ("1".equalsIgnoreCase(loaiSach)){
+            screenOutput.println("Trung binh con don gia cua Sach Giao Khoa la: " + trungBinhCongDonGia);
+            screenOutput.flush();
+        }
+        if ("2".equalsIgnoreCase(loaiSach)){
+            screenOutput.println("Trung binh con don gia cua Sach Tham Khao la: " + trungBinhCongDonGia);
+            screenOutput.flush();
+        }
     }
 }

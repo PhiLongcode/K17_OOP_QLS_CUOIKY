@@ -68,7 +68,6 @@ public class AppQLS {
 
         // Start the menu control loop
         menuCUIRemote.controlLoop();
-
-	}
+}
 
 }
